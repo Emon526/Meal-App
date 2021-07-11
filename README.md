@@ -1,6 +1,7 @@
-# mealapp
+# Mealapp
 
-A new Flutter project.
+In this application people can find various kind  recipies.<br>
+Also they add add it in their favourite list and filter it according to there choice.
 
 ## Getting Started
 
