@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../screens/meal_detail_screen.dart';
 import '../models/meal.dart';
 
@@ -10,28 +11,24 @@ class MealItem extends StatelessWidget {
   final Complexity complexity;
   final Affordability affordability;
 
-  MealItem({
-    required this.id,
-    required this.title,
-    required this.imageUrl,
-    required this.affordability,
-    required this.complexity,
-    required this.duration,
-  });
+  MealItem(
+      {@required this.id,
+      @required this.title,
+      @required this.imageUrl,
+      @required this.affordability,
+      @required this.complexity,
+      @required this.duration,});
 
   String get complexityText {
     switch (complexity) {
       case Complexity.Simple:
         return 'Simple';
-        // ignore: dead_code
         break;
       case Complexity.Challenging:
         return 'Challenging';
-        // ignore: dead_code
         break;
       case Complexity.Hard:
         return 'Hard';
-        // ignore: dead_code
         break;
       default:
         return 'Unknown';
@@ -41,16 +38,13 @@ class MealItem extends StatelessWidget {
   String get affordabilityText {
     switch (affordability) {
       case Affordability.Affordable:
-        return 'Affotdable';
-        // ignore: dead_code
+        return 'Affordable';
         break;
       case Affordability.Pricey:
         return 'Pricey';
-        // ignore: dead_code
         break;
       case Affordability.Luxurious:
         return 'Expensive';
-        // ignore: dead_code
         break;
       default:
         return 'Unknown';
@@ -58,10 +52,16 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(
+    Navigator.of(context)
+        .pushNamed(
       MealDetailScreen.routeName,
       arguments: id,
-    );
+    )
+        .then((result) {
+      if (result != null) {
+        // removeItem(result);
+      }
+    });
   }
 
   @override
@@ -102,7 +102,10 @@ class MealItem extends StatelessWidget {
                     ),
                     child: Text(
                       title,
-                      style: TextStyle(fontSize: 26, color: Colors.white),
+                      style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                      ),
                       softWrap: true,
                       overflow: TextOverflow.fade,
                     ),
@@ -117,7 +120,9 @@ class MealItem extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.schedule),
+                      Icon(
+                        Icons.schedule,
+                      ),
                       SizedBox(
                         width: 6,
                       ),
@@ -126,18 +131,20 @@ class MealItem extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.work),
+                      Icon(
+                        Icons.work,
+                      ),
                       SizedBox(
                         width: 6,
                       ),
-                      Text(
-                        complexityText,
-                      ),
+                      Text(complexityText),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.attach_money),
+                      Icon(
+                        Icons.attach_money,
+                      ),
                       SizedBox(
                         width: 6,
                       ),
